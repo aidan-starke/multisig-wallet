@@ -1,9 +1,7 @@
+import React from "react"
 import { Button, Input, Form, Card } from "antd"
-import React, { useState } from "react"
 
 function NewTransfer ({ createTransfer }) {
-    const [transfer, setTransfer] = useState()
-
     function onFinish (values) {
         const { amount, to } = values
         createTransfer({ amount, to })
@@ -11,16 +9,6 @@ function NewTransfer ({ createTransfer }) {
 
     function onFinishFailed (errorInfo) {
         console.log('Failed:', errorInfo)
-    }
-
-    function submit (e) {
-        e.preventDefault()
-        createTransfer(transfer)
-    }
-
-    function updateTransfer (value, field) {
-        console.log(value, field)
-        setTransfer({ ...transfer, [field]: value })
     }
 
     return (

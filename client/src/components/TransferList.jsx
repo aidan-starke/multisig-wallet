@@ -10,7 +10,7 @@ function TransferList ({ transfers, approveTransfer }) {
             to: transfer.to,
             approvals: transfer.approvals,
             sent: transfer.sent ? 'yes' : 'no',
-            action: transfer.approvals === '0' ? <a onClick={() => approveTransfer(transfer.id)}>Approve</a> : null
+            action: transfer.approvals === '0' ? <Button onClick={() => approveTransfer(transfer.id)}>Approve</Button> : null
         }
     ))
 
