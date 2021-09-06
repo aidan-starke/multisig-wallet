@@ -3,7 +3,7 @@ import Data from './components/Data'
 import NewTransfer from './components/NewTransfer'
 import TransferList from './components/TransferList'
 import { getWeb3, getWallet } from './utils'
-import { PageHeader, Space, Spin } from 'antd'
+import { PageHeader, Spin } from 'antd'
 import { Content, Footer } from 'antd/lib/layout/layout'
 import ThemeSwitch from './components/ThemeSwitch'
 
