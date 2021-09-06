@@ -3,11 +3,12 @@ import Data from './components/Data'
 import NewTransfer from './components/NewTransfer'
 import TransferList from './components/TransferList'
 import { getWeb3, getWallet } from './utils'
-import { PageHeader } from 'antd'
+import { PageHeader, Space, Spin } from 'antd'
 import { Content, Footer } from 'antd/lib/layout/layout'
 import ThemeSwitch from './components/ThemeSwitch'
 
 function App () {
+  const [mounted, toggle] = useState(false)
   const [web3, setWeb3] = useState()
   const [accounts, setAccounts] = useState()
   const [wallet, setWallet] = useState()
@@ -42,16 +43,25 @@ function App () {
 
   useEffect(() => {
     init()
-  }, [])
+    if (
+      typeof web3 !== 'undefined'
+      && typeof accounts !== 'undefined'
+      && typeof wallet !== 'undefined'
+      && approvers.length !== 0
+      && typeof quorum !== 'undefined'
+    ) toggle(true)
 
-  if (
-    typeof web3 === 'undefined'
-    || typeof accounts === 'undefined'
-    || typeof wallet === 'undefined'
-    || approvers.length === 0
-    || typeof quorum === 'undefined'
-  )
-    return <div>Loading...</div>
+
+  }, [web3, accounts, wallet, approvers, quorum])
+
+  // if (
+  //   typeof web3 === 'undefined'
+  //   || typeof accounts === 'undefined'
+  //   || typeof wallet === 'undefined'
+  //   || approvers.length === 0
+  //   || typeof quorum === 'undefined'
+  // )
+  //   return <div style={{ margin: '0 auto' }}><Spin size='large' /></div>
 
   return (
     <div className="App">
@@ -61,14 +71,16 @@ function App () {
         style={{ cursor: 'pointer', border: '1px solid rgb(235, 237, 240)' }}
       />
 
-      <Content style={{ maxWidth: '1000px', margin: 'auto' }}>
+      {!mounted && <div style={{ textAlign: 'center' }}><Spin size='large' /></div>}
+
+      {mounted && <Content style={{ maxWidth: '1000px', margin: 'auto' }}>
         <div style={{ margin: 'auto', display: 'inline-flex', maxWidth: '1000px' }}>
           <Data approvers={approvers} quorum={quorum} style={{ padding: '10px' }} />
           <NewTransfer createTransfer={createTransfer} />
         </div>
 
         <TransferList transfers={transfers} approveTransfer={approveTransfer} style={{ display: 'block' }} />
-      </Content>
+      </Content>}
 
       <ThemeSwitch />
 
