@@ -2,15 +2,11 @@ import Web3 from 'web3'
 import detectEthereumProvider from '@metamask/detect-provider'
 import Wallet from './contracts/Wallet.json'
 
-async function getWeb3 () {
-    const provider = await detectEthereumProvider()
-
-    return new Promise((resolve, reject) => {
+function getWeb3 () {
+    return new Promise(async (resolve, reject) => {
+        const provider = await detectEthereumProvider()
         if (provider) {
-            provider.request({ method: 'eth_accounts' })
-                .then((accounts) => console.log(accounts))
-                .catch((error) => console.error(error))
-
+            await provider.request({ method: 'eth_requestAccounts' })
             try {
                 const web3 = new Web3(window.ethereum)
                 resolve(web3)

@@ -58,9 +58,8 @@ function App () {
       <PageHeader
         title='Multisig Dapp'
         subTitle='Multisig Dapp deployed to Rinkeby'
-        style={{ cursor: 'pointer', border: '1px solid rgb(235, 237, 240)' }}
+        style={{ border: '1px solid rgb(235, 237, 240)' }}
       />
-
 
       <Content style={{ maxWidth: '1000px', margin: 'auto' }}>
         <div style={{ margin: 'auto', display: 'inline-flex', maxWidth: '1000px' }}>
