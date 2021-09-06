@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Header from './components/Header'
+import Data from './components/Data'
 import NewTransfer from './components/NewTransfer'
 import TransferList from './components/TransferList'
 import { getWeb3, getWallet } from './utils'
+import { PageHeader } from 'antd'
+import { Content, Footer } from 'antd/lib/layout/layout'
+import ThemeSwitch from './components/ThemeSwitch'
 
 function App () {
   const [web3, setWeb3] = useState()
@@ -52,10 +55,24 @@ function App () {
 
   return (
     <div className="App">
-      Multisig Dapp
-      <Header approvers={approvers} quorum={quorum} />
-      <NewTransfer createTransfer={createTransfer} />
-      <TransferList transfers={transfers} approveTransfer={approveTransfer} />
+      <PageHeader
+        title='Multisig Dapp'
+        subTitle='Multisig Dapp deployed to Rinkeby'
+        style={{ cursor: 'pointer', border: '1px solid rgb(235, 237, 240)' }}
+      />
+
+      <Content style={{ maxWidth: '1000px', margin: 'auto' }}>
+        <div style={{ margin: 'auto', display: 'inline-flex', maxWidth: '1000px' }}>
+          <Data approvers={approvers} quorum={quorum} style={{ padding: '10px' }} />
+          <NewTransfer createTransfer={createTransfer} />
+        </div>
+
+        <TransferList transfers={transfers} approveTransfer={approveTransfer} style={{ display: 'block' }} />
+      </Content>
+
+      <ThemeSwitch />
+
+      <Footer style={{ textAlign: 'center' }}>MyNFT ©2021 Created by <a href='https://starkemedia.com' target='_blank' rel="noreferrer">StarkeMedia</a></Footer>
     </div>
   )
 }
