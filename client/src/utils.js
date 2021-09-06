@@ -7,7 +7,7 @@ async function getWeb3 () {
         let provider = detectEthereumProvider()
 
         if (provider) {
-            window.ethereum.request({ method: 'eth_accounts' })
+            provider.request({ method: 'eth_accounts' })
                 .then((accounts) => console.log(accounts))
                 .catch((error) => console.error(error))
 
