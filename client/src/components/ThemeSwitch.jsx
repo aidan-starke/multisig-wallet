@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { Switch } from "antd";
-import { useThemeSwitcher } from "react-css-theme-switcher";
+import React, { useEffect, useState } from "react"
+import { Switch } from "antd"
+import { useThemeSwitcher } from "react-css-theme-switcher"
 
 export default function ThemeSwitch () {
 
-  const theme = window.localStorage.getItem("theme");
-  const [isDarkMode, setIsDarkMode] = useState(!theme || theme === "light" ? false : true);
-  const { switcher, currentTheme, status, themes } = useThemeSwitcher();
+  const theme = window.localStorage.getItem("theme")
+  const [isDarkMode, setIsDarkMode] = useState(!theme || theme === "light" ? false : true)
+  const { switcher, currentTheme, status, themes } = useThemeSwitcher()
 
   useEffect(() => {
-    window.localStorage.setItem("theme", currentTheme);
-  }, [currentTheme]);
+    window.localStorage.setItem("theme", currentTheme)
+  }, [currentTheme])
 
   const toggleTheme = (isChecked) => {
-    setIsDarkMode(isChecked);
-    switcher({ theme: isChecked ? themes.dark : themes.light });
-  };
+    setIsDarkMode(isChecked)
+    switcher({ theme: isChecked ? themes.dark : themes.light })
+  }
 
   // Avoid theme change flicker
   if (status === "loading") {
-    return null;
+    return null
   }
 
   return (
@@ -27,5 +27,5 @@ export default function ThemeSwitch () {
       <span style={{ padding: 8 }}>{currentTheme === "light" ? "☀️" : "🌜"}</span>
       <Switch checked={isDarkMode} onChange={toggleTheme} />
     </div>
-  );
+  )
 }

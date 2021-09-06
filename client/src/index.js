@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
 import 'antd/dist/antd.css'
 import { ThemeSwitcherProvider } from 'react-css-theme-switcher'
 
@@ -18,5 +18,5 @@ ReactDOM.render(
     </ThemeSwitcherProvider>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
 

@@ -45,7 +45,7 @@ function TransferList ({ transfers, approveTransfer }) {
             dataIndex: 'action',
             key: 'action',
         }
-    ];
+    ]
 
     return (
         <Card style={{ margin: '10px' }}>
