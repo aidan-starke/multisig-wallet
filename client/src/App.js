@@ -8,7 +8,6 @@ import { Content, Footer } from 'antd/lib/layout/layout'
 import ThemeSwitch from './components/ThemeSwitch'
 
 function App () {
-  const [mounted, toggle] = useState(false)
   const [web3, setWeb3] = useState()
   const [accounts, setAccounts] = useState()
   const [wallet, setWallet] = useState()
