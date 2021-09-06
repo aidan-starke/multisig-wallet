@@ -12,7 +12,7 @@ async function getWeb3 () {
                 .catch((error) => console.error(error))
 
             try {
-                const web3 = new Web3(window.ethereum)
+                const web3 = new Web3(provider)
                 resolve(web3)
             } catch (err) {
                 reject(err)
