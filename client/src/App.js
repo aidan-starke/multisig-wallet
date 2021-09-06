@@ -50,9 +50,8 @@ function App () {
       && approvers.length !== 0
       && typeof quorum !== 'undefined'
     ) toggle(true)
-
-
-  }, [web3, accounts, wallet, approvers, quorum])
+    //eslint-disable-next-line
+  }, [])
 
   // if (
   //   typeof web3 === 'undefined'
